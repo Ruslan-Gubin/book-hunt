@@ -21,8 +21,8 @@ COPY --from=builder /book-hunt/public ./public
 COPY --from=builder /book-hunt/package.json ./package.json
 COPY --from=builder /book-hunt/.next ./.next
 COPY --from=builder /book-hunt/node_modules ./node_modules
+COPY --from=builder /book-hunt/next.config.js ./next.config.js
 
-ENV BOOK_API_KEY="AIzaSyAc4EyKxIixNT03vpS2mduKxbKeLCrgkec"
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm","run", "start"]
