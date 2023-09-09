@@ -1,0 +1,17 @@
+.button_more__container {
+  display: flex;
+  justify-content: center;
+  padding: 35px 0;
+  .button_more {
+    padding: 10px 20px;
+    border-radius: 20px;
+  background-color: orange;
+  color: white;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.button_disabled {
+  background-color: rgb(164, 164, 164); 
+  color: rgb(233, 233, 233);
+}
+}

@@ -1,0 +1,29 @@
+.input_search__container {
+  position: relative;
+  .input_search {
+    width: 100%;
+    padding: 15px;
+    padding-right: 55px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.318);
+    border: 1px solid rgba(255, 166, 0, 0);
+    transition: all 0.4s ease;
+    &:focus {
+      border: 1px solid orange;
+      box-shadow: 1px 1px 5px 1px rgba(255, 132, 0, 0.696);
+    }
+  }
+
+  .input_search__svg {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(27, 27, 27);
+    }
+  }
+}

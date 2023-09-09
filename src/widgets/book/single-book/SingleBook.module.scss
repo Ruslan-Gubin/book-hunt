@@ -1,0 +1,29 @@
+.book {
+  display: flex;
+  @media (max-width: 990px) {
+    flex-direction: column;
+  }
+
+  
+  .book_left__side {
+    background-image: linear-gradient(to right, (white, rgb(225, 225, 225)));
+    padding: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    @media (max-width: 990px) {
+      width: 100%;
+    }
+    .book_image {
+      box-shadow: 3px 1px 7px 2px rgba(0, 0, 0, 0.436);
+    }
+  }
+  .book_right__side {
+    width: 50%;
+    background-image: linear-gradient(to right, (white, rgb(225, 225, 225)));
+    padding: 50px;
+    @media (max-width: 990px) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.link_list {
+  padding: 25px 0;
+  display: flex;
+  span {
+    cursor: pointer;
+  }
+  .link_item {
+    color: #8f8f8f;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-right: 5px;
+    &:hover {
+      color: rgb(78, 78, 78);
+    }
+  }
+}

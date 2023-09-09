@@ -1,0 +1,39 @@
+.book_info__container {
+  .category_list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    .category_item {
+      font-size: 1.2rem;
+      padding-bottom: 5px;
+    }
+  }
+  .book_title {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 30px;
+    @media (max-width: 550px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .book_author_list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    .book_author_item {
+      font-size: 1.5rem;
+      color: rgb(133, 133, 133);
+      text-decoration: underline;
+      padding: 5px 0;
+      padding-right: 10px;
+      @media (max-width: 550px) {
+        font-size: 1.3rem;
+      }
+      &:hover {
+        cursor: pointer;
+        color: rgb(114, 114, 114);
+      }
+    }
+  }
+}

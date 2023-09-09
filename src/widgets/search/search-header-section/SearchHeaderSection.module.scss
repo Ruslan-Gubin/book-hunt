@@ -1,0 +1,36 @@
+.search_header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 130px;
+  @media (max-width: 1200px) {
+    top: 40px;
+  }
+  @media (max-width: 650px) {
+    top: 10px;
+  }
+  @media (max-width: 297px) {
+    top: -40px;
+  }
+ 
+.search_selects {
+  padding: 30px 0;
+  display: flex;
+  @media (max-width: 990px) {
+    justify-content: space-between;
+    
+  }
+  @media (max-width: 650px) {
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .separator {
+    width: 20px;
+  }
+
+}
+}

@@ -1,0 +1,35 @@
+%array {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background-color: rgb(74, 74, 74);
+}
+
+.dropdown_selected__toggle {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  &::before {
+    @extend %array;
+    top: 9px;
+    left: 0px;
+    rotate: (35deg);
+  }
+  &::after {
+    @extend %array;
+    top: 9px;
+    left: 9px;
+    rotate: (-35deg);
+  }
+}
+
+.dropdown_selected__active {
+  &::before {
+    rotate: (-35deg);
+  }
+  &::after {
+    rotate: (35deg);
+  }
+}

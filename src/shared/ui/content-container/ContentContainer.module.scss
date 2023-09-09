@@ -1,0 +1,19 @@
+.content_container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+  position: relative;
+  @media (max-width: 1200px) {
+    width: 936px;
+  }
+  @media (max-width: 990px) {
+    width: 690px;
+  }
+  @media (max-width: 676px) {
+    width: 100%;
+  }
+  @media (max-width: 576px) {
+    width: 100%;
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,35 @@
+.book_list {
+
+  .book_total__text {
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 25px 0;
+    color: rgb(78, 78, 78);
+    
+  }
+  
+.book_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  
+  padding: 0 70px;
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+  }
+  @media (max-width: 990px) {
+    padding: 0 20px;
+  }
+  @media (max-width: 570px) {
+    padding: 0 10px;
+  }
+  @media (max-width: 300px) {
+    padding: 0px;
+  }
+}
+
+
+
+}
