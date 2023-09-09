@@ -1,5 +1,5 @@
-import {  useSearcBooks } from "@/entities";
-import { useCallback } from "react";
+import { fetchBooks } from "@/entities/book/model/thunk";
+import { useAppDispatch } from "@/shared";
 
 import styles from "./ButtonMore.module.scss";
 
@@ -10,16 +10,15 @@ type Props = {
 };
 
 const ButtonMore = ({ apiKey, baseBookUrl, disabled }: Props) => {
-  const { fetchSearchBooks } = useSearcBooks();
+  const dispatch = useAppDispatch()
 
-
-  const handleGetMoreBooks = useCallback(() => {
-    fetchSearchBooks({
+  const handleGetMoreBooks = () => {
+    dispatch(fetchBooks({
       apiKey,
       baseUrl: baseBookUrl,
-      method: "add more",
-    });
-  },[]);
+      method: 'add more',
+    }))
+  };
 
   return (
     <div className={styles.button_more__container}>

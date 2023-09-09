@@ -73,10 +73,19 @@ export type GetBooksReq = {
   apiKey: string;
   search: string;
   baseUrl: string;
-  maxResults?: number;
+  maxResults: number;
   sorting: string;
   category: string;
   currentPage: number;
+  method?: "add more" | "init fetch";
+};
+
+export type FetchBooksThunkParams = {
+  apiKey: string;
+  baseUrl: string;
+  category?: string;
+  sorting?: string;
+  maxResults?: number;
   method?: "add more" | "init fetch";
 };
 

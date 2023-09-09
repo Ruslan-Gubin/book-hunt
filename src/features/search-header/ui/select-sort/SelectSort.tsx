@@ -1,7 +1,8 @@
+import { usePathname, useRouter } from "next/navigation";
 import { useSearchActions, useSearchSelect } from "../../model";
-import { Dropdown } from "@/shared";
+import { Dropdown, useAppDispatch } from "@/shared";
 import { OPTIONS_DROPDOWNS } from "../../constant";
-import { useSearcBooks } from "@/entities/book/hooks/useSearchBooks";
+import { fetchBooks } from "@/entities/book/model/thunk";
 
 type Props = {
   apiKey: string;
@@ -11,11 +12,21 @@ type Props = {
 const SelectSort = ({ apiKey, baseUrl }: Props) => {
   const { setSortingValue } = useSearchActions();
   const { sorting } = useSearchSelect();
-  const { fetchSearchBooks } = useSearcBooks();
+  const dispatch = useAppDispatch()
+  const router = useRouter();
+  const patchName = usePathname();
 
   const handleChangeSort = (category: OptionsSelectType) => {
     setSortingValue(category);
-    fetchSearchBooks({ apiKey, baseUrl, sortingValue: category.value });
+    dispatch(fetchBooks({
+      apiKey,
+      baseUrl: baseUrl,
+      sorting: category.value,
+    }))
+
+    if (patchName !== "/") {
+      router.push("/");
+    }
   };
 
   return (

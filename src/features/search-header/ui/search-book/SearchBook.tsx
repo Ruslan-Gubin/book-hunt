@@ -1,8 +1,9 @@
 "use client";
 import { ChangeEventHandler, useCallback, useEffect, useRef } from "react";
-import { useSearcBooks } from "@/entities";
-import { InputSearch } from "@/shared";
+import { usePathname, useRouter } from "next/navigation";
+import { InputSearch, useAppDispatch } from "@/shared";
 import { useSearchActions, useSearchSelect } from "../../model";
+import { fetchBooks } from "@/entities/book/model/thunk";
 
 type Props = {
   apiKey: string;
@@ -12,12 +13,20 @@ type Props = {
 const SearchBook = ({ apiKey, baseUrl }: Props) => {
   const { changeSearchValue } = useSearchActions();
   const { searchValue } = useSearchSelect();
-  const { fetchSearchBooks } = useSearcBooks();
   const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch()
+  const router = useRouter();
+  const patchName = usePathname();
 
   const handleSearchClick = () => {
-    changeSearchValue("");
-    fetchSearchBooks({ apiKey, baseUrl });
+    dispatch(fetchBooks({
+      apiKey,
+      baseUrl: baseUrl,
+    }))
+
+    if (patchName !== "/") {
+      router.push("/");
+    }
   };
 
   const checkPressEnter = useCallback(

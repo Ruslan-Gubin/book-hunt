@@ -1,12 +1,14 @@
 "use client";
 import { useEffect } from "react";
 import Link from "next/link";
-import { useBookSelect, useSearcBooks } from "@/entities/book";
+import { useBookSelect } from "@/entities/book";
 import { BookItem } from "../book-item/BookItem";
-import { Loader } from "@/shared";
+import { Loader, useAppDispatch } from "@/shared";
 import { ButtonMore } from "@/features";
 
 import styles from "./BookList.module.scss";
+import { BookError } from "../book-error/BookError";
+import { fetchBooks } from "@/entities/book/model/thunk";
 
 const BookList = ({
   apiKey,
@@ -16,15 +18,18 @@ const BookList = ({
   baseBookUrl: string;
 }) => {
   const { error, loading, books, totalItems } = useBookSelect();
-  const { fetchSearchBooks } = useSearcBooks();
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (loading) return;
-    fetchSearchBooks({ apiKey, baseUrl: baseBookUrl });
+    dispatch(fetchBooks({
+      apiKey,
+      baseUrl: baseBookUrl,
+    }))
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return <BookError text={error} />;
   }
 
   if (books.length === 0) {
@@ -40,15 +45,17 @@ const BookList = ({
         {books.length > 0 &&
           books.map((book, index) => (
             <Link href={`book/${book.id}`} key={`${book.id}${index}`}>
-              <BookItem
+            {book.volumeInfo &&
+                <BookItem
                 imageSrc={book.volumeInfo.imageLinks?.thumbnail}
                 authors={book.volumeInfo.authors}
                 categories={book.volumeInfo.categories}
                 title={book.volumeInfo.title}
                 imgAlt={`Image id ${book.id}`}
                 priority={index === 0}
-              />
-            </Link>
+                />
+              }
+                </Link>
           ))}
       </ul>
       {loading && <Loader />}

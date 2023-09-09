@@ -22,11 +22,11 @@ export const extraReducers = (
       const { items, totalItems } = data; 
 
       if (method === "add more") {
-        state.books.push(...items.filter((book) => book.volumeInfo.imageLinks));
+        state.books.push(...items);
         state.currentPage = state.currentPage + 1;
       } else {
         state.books = [];
-        state.books = items.filter((book) => book.volumeInfo.imageLinks);
+        state.books = items;
         state.totalItems = totalItems;
         state.currentPage = 0;
       }
