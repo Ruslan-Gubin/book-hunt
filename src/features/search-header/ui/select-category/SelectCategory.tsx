@@ -1,8 +1,7 @@
-import { useSearchActions, useSearchSelect } from "../../model";
-import { Dropdown, useAppDispatch } from "@/shared";
+import { useSearchSelect } from "../../model";
 import { OPTIONS_DROPDOWNS } from "../../constant";
-import { usePathname, useRouter } from "next/navigation";
-import { fetchBooks } from "@/entities/book/model/thunk";
+import { useChangeCategory } from "../../hooks";
+import { Dropdown } from "@/shared";
 
 type Props = {
   apiKey: string;
@@ -10,22 +9,11 @@ type Props = {
 };
 
 const SelectCategory = ({ apiKey, baseUrl }: Props) => {
-  const { setCategoryValue } = useSearchActions();
+  const { setCategoryValue } = useChangeCategory();
   const { category } = useSearchSelect();
-  const dispatch = useAppDispatch()
-  const router = useRouter();
-  const patchName = usePathname();
 
   const handleChangeCategory = (category: OptionsSelectType) => {
-    setCategoryValue(category);
-    dispatch(fetchBooks({
-      apiKey,
-      baseUrl: baseUrl,
-      category: category.value,
-    }))
-    if (patchName !== "/") {
-      router.push("/");
-    }
+    setCategoryValue({ category, apiKey, baseUrl });
   };
 
   return (

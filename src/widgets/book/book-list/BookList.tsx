@@ -5,10 +5,10 @@ import { useBookSelect } from "@/entities/book";
 import { BookItem } from "../book-item/BookItem";
 import { Loader, useAppDispatch } from "@/shared";
 import { ButtonMore } from "@/features";
+import { fetchBooks } from "@/entities/book/model/thunk";
+import { BookError } from "../book-error/BookError";
 
 import styles from "./BookList.module.scss";
-import { BookError } from "../book-error/BookError";
-import { fetchBooks } from "@/entities/book/model/thunk";
 
 const BookList = ({
   apiKey,

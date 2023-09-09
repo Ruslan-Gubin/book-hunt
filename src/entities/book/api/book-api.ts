@@ -31,7 +31,7 @@ const getBooks = <T>({
   let currentPageParameter = "";
 
   if (currentPage) {
-    currentPageParameter = "&startIndex=" + (currentPage + 1) * 30;
+    currentPageParameter = "&startIndex=" + currentPage * maxResults;
   }
 
   let searchValue = search;
@@ -45,9 +45,9 @@ const getBooks = <T>({
   const maxResultsParams = `&maxResults=${maxResults}`;
   const keyParams = `&key=${apiKey}`;
 
-  const resultParams = `${searchParams}${categorySortingParameter}${maxResultsParams}${sortParams}${currentPageParameter}${keyParams}`;
+  const searchUrl = `${searchParams}${categorySortingParameter}${maxResultsParams}${sortParams}${currentPageParameter}${keyParams}`;
 
-  return fetchGet(baseUrl, resultParams);
+  return fetchGet(baseUrl, searchUrl);
 };
 
 export const BookApi = {
